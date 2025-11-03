@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nana'sCar - Admin</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<header>
+    <div class="logo-container">
+        <img src="BobNana's.png" alt="Logo Nana'sCar" class="logo" />
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="cars.html">Voitures à vendre</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <!-- LOGIN ADMIN -->
+    <section class="admin-login" id="loginSection">
+        <div class="login-container">
+            <h1 class="neon-text">Admin Nana'sCar</h1>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" placeholder="Entrez le mot de passe" required />
+                </div>
+                <button type="submit" class="login-btn">Se connecter</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" style="display: none;">
+        <!-- Menu gauche (inchangé) -->
+        <div class="admin-sidebar">
+            <button class="admin-btn" data-section="cars">Gestion des voitures</button>
+            <a href="calculateur.html" class="admin-btn" style="text-decoration:none;">Calculateur</a>
+        </div>
+
+        <div class="admin-content">
+            <!-- SECTION GESTION DES VOITURES -->
+            <section id="cars" class="admin-section">
+                <div class="cards-row">
+                    
+                    <!-- FORMULAIRE À GAUCHE -->
+                    <div class="card card-left">
+                        <h2 class="section-title">Gestion des véhicules</h2>
+
+                        <form class="car-form" id="carForm">
+                            <h3 class="sub-title">Ajouter un véhicule</h3>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Marque / Modèle</label>
+                                    <input type="text" id="carName" required />
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Prix ($)</label>
+                                    <input type="number" id="carPrice" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Photo (PC)</label>
+                                <input type="file" id="carImg" accept="image/*" required hidden>
+                                <label for="carImg" class="file-btn">📁 Choisir une photo</label>
+                             </div>
+
+                            <h3 class="sub-title">Caractéristiques</h3>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Moteur</label>
+                                    <select id="engine">
+                                        <option>1</option><option>2</option>
+                                        <option>3</option><option>4</option><option>5</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Transmission</label>
+                                    <select id="trans">
+                                        <option>1</option><option>2</option>
+                                        <option>3</option><option>4</option><option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Suspension</label>
+                                    <select id="sus">
+                                        <option>1</option><option>2</option>
+                                        <option>3</option><option>4</option><option>5</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Frein</label>
+                                    <select id="brake">
+                                        <option>1</option><option>2</option>
+                                        <option>3</option><option>4</option><option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Turbo</label>
+                                    <select id="turbo">
+                                        <option>Oui</option><option>Non</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Autoradio</label>
+                                    <select id="radio">
+                                        <option>Oui</option><option>Non</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-submit">Ajouter</button>
+                        </form>
+                    </div>
+
+                    <!-- LISTE DES VOITURES À DROITE -->
+                    <div class="card card-right">
+                        <h2 class="section-title">Véhicules enregistrés</h2>
+                        <div class="car-list" id="carList">
+                            <p>Aucun véhicule pour le moment.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SECTION CALCULATEUR (inchangé) -->
+            <section id="calculator" class="admin-section" style="display: none;">
+                <h2 class="section-title">Calculateur GTA$</h2>
+                <label>Prix achat :</label>
+                <input type="number" id="buyPrice" placeholder="0" />
+
+                <label>Pourcentage de marge % :</label>
+                <input type="number" id="margin" placeholder="0" />
+
+                <button id="calcBtn">Calculer prix de vente</button>
+                <p id="calcResult"></p>
+            </section>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Nana'sCar - Tous droits réservés</p>
+</footer>
+
+<!-- ✅ JAVASCRIPT PROPRE, PHOTO PC INCLUSE -->
+<script>
+const password = "gtaadmin";
+const loginForm = document.getElementById("loginForm");
+const loginSection = document.getElementById("loginSection");
+const dashboard = document.getElementById("dashboard");
+
+loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (document.getElementById("password").value === password) {
+        loginSection.style.display = "none";
+        dashboard.style.display = "flex";
+    } else {
+        alert("Mot de passe incorrect !");
+    }
+});
+
+// Navigation dashboard
+const adminButtons = document.querySelectorAll(".admin-btn");
+const adminSections = document.querySelectorAll(".admin-section");
+
+adminButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        adminSections.forEach((sec) => (sec.style.display = "none"));
+        document.getElementById(btn.dataset.section).style.display = "block";
+    });
+});
+
+// ---- GESTION VEHICULES ----
+let cars = JSON.parse(localStorage.getItem("cars")) || [];
+
+function displayCars() {
+    const carList = document.getElementById("carList");
+    carList.innerHTML = "";
+
+    if (cars.length === 0) {
+        carList.innerHTML = "<p>Aucun véhicule pour le moment.</p>";
+        return;
+    }
+
+    cars.forEach((car, i) => {
+        const row = document.createElement("div");
+        row.className = "car-item";
+       row.innerHTML = `
+    <img src="${car.img}" class="car-thumb">
+    <span class="car-title">${car.name}</span>
+    <span class="car-price">${car.price}$</span>
+    <button class="delete-btn" onclick="deleteCar(${i})">X</button>
+`;
+        carList.appendChild(row);
+    });
+}
+
+document.getElementById("carForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const file = document.getElementById("carImg").files[0];
+    const reader = new FileReader();
+
+    reader.onload = function () {
+        const newCar = {
+            name: document.getElementById("carName").value,
+            price: document.getElementById("carPrice").value,
+            img: reader.result,
+            engine: document.getElementById("engine").value,
+            trans: document.getElementById("trans").value,
+            sus: document.getElementById("sus").value,
+            brake: document.getElementById("brake").value,
+            turbo: document.getElementById("turbo").value,
+            radio: document.getElementById("radio").value,
+        };
+
+        cars.push(newCar);
+        localStorage.setItem("cars", JSON.stringify(cars));
+        displayCars();
+        document.getElementById("carForm").reset();
+    };
+
+    reader.readAsDataURL(file);
+});
+
+function deleteCar(i) {
+    cars.splice(i, 1);
+    localStorage.setItem("cars", JSON.stringify(cars));
+    displayCars();
+}
+
+displayCars();
+
+// ---- CALCULATEUR ----
+document.getElementById("calcBtn").addEventListener("click", function () {
+    const buy = parseFloat(document.getElementById("buyPrice").value);
+    const margin = parseFloat(document.getElementById("margin").value);
+    if (!isNaN(buy) && !isNaN(margin)) {
+        const sellPrice = buy + buy * (margin / 100);
+        document.getElementById("calcResult").innerText =
+            "Prix de vente : " + sellPrice.toFixed(0) + " GTA$";
+    } else {
+        alert("Valeurs invalides !");
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur</title>
+
+    <!-- ✅ AJOUT DU FICHIER CSS -->
+    <link rel="stylesheet" href="calculateur.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="BobNana's.png" alt="Logo" style="width:80px;">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="cars.html">Voitures à vendre</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- ✅ WRAPPER PRINCIPAL (PLEIN ÉCRAN EN 2 COLONNES) -->
+<div class="main-container">
+
+    <!-- ✅ COLONNE GAUCHE (1/3) -->
+    <div class="left-panel">
+
+        <div class="vehicle-title">Liste des véhicules</div>
+
+        <input type="text" id="searchInput" placeholder="Rechercher un véhicule…">
+
+        <div id="vehicleList">
+            <!-- Listes générées par JS -->
+        </div>
+    </div>
+
+
+    <!-- ✅ COLONNE DROITE (2/3) -->
+    <div class="right-panel">
+
+        <h1>Calculateur Achat-Revente de BobNana's</h1>
+
+        <label>Véhicule sélectionné :</label>
+        <input type="text" id="selectedVehicle" disabled>
+
+        <label>Prix d'achat (calculé) :</label>
+        <div id="buyPrice" class="result-box"> - </div>
+
+        <label>Marge % :</label>
+        <input type="number" id="margin" placeholder="Ex : 30">
+
+        <label>Niveau moteur :</label>
+        <select id="engineLevel">
+            <option value="0">0</option>
+            <option value="1">1</option><option value="2">2</option>
+            <option value="3">3</option><option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <label>Transmission :</label>
+        <select id="transmissionLevel">
+            <option value="0">0</option>
+            <option value="1">1</option><option value="2">2</option>
+            <option value="3">3</option><option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <label>Turbo :</label>
+        <select id="turbo">
+            <option value="non">Non</option>
+            <option value="oui">Oui</option>
+        </select>
+
+        <label>État du véhicule :</label>
+        <select id="condition">
+            <option value="excellent">Excellent</option>
+            <option value="bon">Bon</option>
+            <option value="moyen">Moyen</option>
+            <option value="mauvais">Mauvais</option>
+        </select>
+
+        <button id="calculateBtn">Calculer</button>
+
+        <h2>Résultats</h2>
+      <div class="results-row">
+    <div class="result-box-small">
+        Prix de vente : <span id="sellPrice"> - </span> $
+    </div>
+
+    <div class="result-box-small">
+        Bénéfice : <span id="profit"> - </span> $
+    </div>
+</div>
+
+
+
+        <button id="saveSale">Enregistrer la vente</button>
+
+        <h2>Historique des ventes</h2>
+        <table id="salesHistory">
+            <thead>
+                <tr>
+                    <th>Véhicule</th>
+                    <th>Achat</th>
+                    <th>Vente</th>
+                    <th>Bénéfice</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+</div>
+
+<!-- ✅ TON SCRIPT EXISTANT, ON Y TOUCHE PAS -->
+<script src="script.js"></script>
+
+</body>
+</html>

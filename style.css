@@ -1,0 +1,939 @@
+/* ===== Reset et style de base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #0a0a0a;
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* ===== Header ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #111;
+    border-bottom: 2px solid #00ffff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ff0;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ===== Logo ===== */
+.logo-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    padding: 5px;
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 0 15px #ff0, 0 0 30px #00f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+/* ===== Hero ===== */
+.hero {
+    text-align: center;
+    margin: 80px 20px;
+}
+
+.neon-text {
+    color: #ff0;
+    text-shadow:
+        0 0 5px #ff0,
+        0 0 10px #ff0,
+        0 0 20px #00f,
+        0 0 30px #00f;
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    border-top: 2px solid #00ffff;
+}
+
+/* ===== Section voitures ===== */
+.cars-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.cars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+    max-width: 1200px;  /* limite la largeur totale de la grille */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.car-card {
+    background-color: #111;
+    border: 2px solid #00ffff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 10px #00f, 0 0 20px #ff0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;          /* s'assure que chaque carte respecte la colonne */
+    max-width: 300px;     /* largeur maximale d’une carte */
+    margin: 0 auto;       /* centre chaque carte si besoin */
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px #00f, 0 0 40px #ff0;
+}
+
+.car-card img {
+    width: 100%;       /* ne pas dépasser la largeur de la carte */
+    height: 180px;     /* fixe une hauteur pour toutes les images */
+    object-fit: cover; /* garde le ratio et recadre si nécessaire */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+
+.car-card h2 {
+    color: #ff0;
+    margin-bottom: 10px;
+}
+
+.car-card p {
+    color: #fff;
+    font-weight: bold;
+}
+.car-specs {
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+    text-align: left;
+}
+
+.car-specs li {
+    color: #00ffff;
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-shadow: 0 0 3px #00f, 0 0 5px #ff0;
+    font-size: 0.9rem;
+}
+
+/* ===== Section voitures en vedette ===== */
+.featured-cars {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.featured-card {
+    background-color: #111;
+    border: 2px solid #ff0;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 10px #ff0, 0 0 20px #00f;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.featured-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px #ff0, 0 0 40px #00f;
+}
+
+.featured-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.featured-card h3 {
+    color: #ff0;
+    margin-bottom: 5px;
+}
+
+.featured-card p {
+    color: #fff;
+    font-weight: bold;
+}
+.featured-card .car-specs {
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+    text-align: left;
+}
+
+.featured-card .car-specs li {
+    color: #00ffff;
+    font-weight: 500;
+    margin-bottom: 3px;
+    text-shadow: 0 0 3px #00f, 0 0 5px #ff0;
+    font-size: 0.85rem;
+}
+/* ===== Section contact ===== */
+.contact-section {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form label {
+    color: #ff0;
+    font-weight: bold;
+    text-align: left;
+    text-shadow: 0 0 3px #00f, 0 0 5px #ff0;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #00ffff;
+    background-color: #111;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ff0;
+    box-shadow: 0 0 10px #ff0, 0 0 20px #00f;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form button {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ff0;
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-shadow: 0 0 2px #00f;
+}
+
+.contact-form button:hover {
+    background-color: #00ffff;
+    color: #000;
+    box-shadow: 0 0 15px #00f, 0 0 30px #ff0;
+}
+
+/* ===== Dashboard admin ===== */
+#dashboard {
+    display: flex;
+    min-height: 70vh;
+    gap: 20px;
+    padding: 20px;
+}
+
+.admin-sidebar {
+    width: 200px;
+    background-color: #111;
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-btn {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #ff0;
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow: 0 0 2px #00f;
+    transition: 0.3s;
+}
+
+.admin-btn:hover {
+    background-color: #00ffff;
+    color: #000;
+    box-shadow: 0 0 10px #00f, 0 0 20px #ff0;
+}
+
+.admin-content {
+    flex: 1;
+    background-color: #111;
+    border: 2px solid #ff0;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.admin-section input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid #00ffff;
+    background-color: #111;
+    color: #fff;
+}
+
+.admin-section button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #ff0;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow: 0 0 2px #00f;
+}
+
+.admin-section button:hover {
+    background-color: #00ffff;
+    color: #000;
+    box-shadow: 0 0 10px #00f, 0 0 20px #ff0;
+}
+
+#calcResult {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ff0;
+}
+
+/* ===== Page login admin ===== */
+.admin-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background: linear-gradient(135deg, #000 0%, #111 100%);
+}
+
+.login-container {
+    background-color: #111;
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 20px #00ffff, 0 0 40px #ff0;
+    text-align: center;
+    width: 350px;
+}
+
+.neon-text {
+    color: #ff0;
+    font-size: 2rem;
+    text-shadow:
+        0 0 5px #ff0,
+        0 0 10px #ff0,
+        0 0 20px #00f,
+        0 0 30px #00f;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    color: #00ffff;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    text-shadow: 0 0 3px #00f, 0 0 5px #ff0;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #00ffff;
+    background-color: #111;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #ff0;
+    box-shadow: 0 0 10px #ff0, 0 0 20px #00f;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ff0;
+    color: #111;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    text-shadow: 0 0 2px #00f;
+}
+
+.login-btn:hover {
+    background-color: #00ffff;
+    color: #000;
+    box-shadow: 0 0 15px #00f, 0 0 30px #ff0;
+}
+
+/* ▼ SECTION GESTION DES VEHICULES ▼ */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 650px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.08);
+}
+
+.section-title {
+    margin-top: 0;
+    text-align: center;
+    font-size: 22px;
+    color: #333;
+}
+
+.sub-title {
+    margin: 20px 0 10px 0;
+    color: #444;
+    font-size: 18px;
+}
+
+.car-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.car-form input,
+.car-form select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #cfcfcf;
+    background: #fafafa;
+    font-size: 15px;
+}
+
+.btn-submit {
+    margin-top: 20px;
+    background: #e41d1d;
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-submit:hover {
+    background: #b11212;
+}
+
+.car-list {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+}
+/* ▼ SECTION GESTION DES VEHICULES — VERSION FOND NOIR ▼ */
+.card {
+    background: #111;                    /* Fond noir élégant */
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 650px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.section-title {
+    margin-top: 0;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.sub-title {
+    margin: 20px 0 10px 0;
+    color: #f2f2f2;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.car-form input,
+.car-form select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: #222;                     /* Fond sombre */
+    font-size: 15px;
+    color: white;                         /* Texte lisible */
+    outline: none;
+}
+
+/* REND LE MENU DÉROULANT LISIBLE ET BEAU */
+.car-form select option {
+    background: #222;     /* Fond sombre du menu déroulant */
+    color: white;
+    font-size: 15px;
+}
+
+/* Survol et focus améliorés */
+.car-form input:focus,
+.car-form select:focus {
+    border-color: #00eaff;
+    box-shadow: 0 0 8px #00eaff;
+}
+
+.btn-submit {
+    margin-top: 20px;
+    background: #00eaff;
+    border: none;
+    color: #000;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-submit:hover {
+    background: #0088aa;
+}
+
+.car-list {
+    margin-top: 15px;
+    padding: 15px;
+    background: #181818;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.car-item {
+    background: #222;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background: #e41d1d;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.delete-btn:hover {
+    background: #a50f0f;
+}
+.car-item {
+    background: #222;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.car-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.delete-btn {
+    background: #e41d1d;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background: #a50f0f;
+}
+
+/* CONTENEUR FORM + LISTE */
+.car-container {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap; /* permet de revenir en colonne si écran étroit */
+}
+
+/* FORM A GAUCHE */
+.car-form {
+    background: #111;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    flex: 1;
+    min-width: 280px;
+}
+
+/* LISTE A DROITE */
+.car-list-container {
+    background: #111;
+    padding: 20px;
+    border-radius: 12px;
+    flex: 1;
+    min-width: 280px;
+    max-height: 450px;
+    overflow-y: auto; /* scroll si liste longue */
+}
+
+/* ELEMENT VEHICULE */
+.car-item {
+    background: #222;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.car-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.delete-btn {
+    background: #e41d1d;
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.delete-btn:hover { background: #a50f0f; }
+
+/* Ligne contenant les 2 cartes */
+.cards-row {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;       /* Si écran trop petit, passe l’un dessous l’autre */
+}
+
+/* FORMULAIRE GESTION DES VOITURES À GAUCHE */
+.card-left {
+    background: #111;
+    padding: 25px;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+/* LISTE (droite) */
+.card-right {
+    width: 48%;
+    min-width: 320px;
+    max-height: 500px;
+    overflow-y: auto;      /* scroll si beaucoup de voitures */
+}
+
+/* Continuation du style de la carte */
+.card {
+    background: #111;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Liste des véhicules */
+.car-item {
+    background: #222;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.car-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.car-form {
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.car-form input,
+.car-form select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background: #222;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    font-size: 15px;
+}
+
+.card-left h2,
+.card-left .sub-title {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.btn-submit {
+    width: 100%;
+    background: #00eaff;
+    color: black;
+    border: none;
+    font-size: 17px;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-submit:hover {
+    background: #0088aa;
+}
+.cards-row {
+    display: flex;
+    gap: 25px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.card-left,
+.card-right {
+    flex: 1;
+}
+/* Miniature plus grande */
+.car-thumb {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Nom + prix mieux lisibles */
+.car-info strong {
+    font-size: 16px;
+    color: white;
+}
+.car-price {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Bouton supprimer plus petit, carré et propre */
+.delete-btn {
+    background: #e41d1d;
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 14px;
+    padding: 0;
+}
+
+.delete-btn:hover {
+    background: #a50f0f;
+}
+.car-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #222;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+    gap: 8px;
+}
+
+/* Photo miniature très petite */
+.car-thumb {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Nom + prix en ligne, taille réduite */
+.car-title {
+    flex: 1;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.car-price {
+    font-size: 14px;
+    margin-right: 8px;
+    white-space: nowrap;
+}
+
+/* Bouton supprimer minuscule (1/6 du bloc max) */
+.delete-btn {
+    width: 14%;
+    max-width: 50px; /* évite qu'il devienne énorme */
+    min-width: 32px;
+    height: 28px;
+    background: #e41d1d;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 0;
+    text-align: center;
+}
+
+.delete-btn:hover {
+    background: #a50f0f;
+}
+/* Bouton stylé pour upload photo */
+.file-btn {
+    display: inline-block;
+    background: #00eaff;
+    color: #000;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+    text-align: center;
+    user-select: none;
+}
+
+.file-btn:hover {
+    background: #0088aa;
+    color: white;
+}
+
+/* Nom du fichier affiché à côté */
+.file-name {
+    margin-left: 10px;
+    color: #bbb;
+    font-size: 14px;
+}
